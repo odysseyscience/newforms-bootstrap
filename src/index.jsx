@@ -280,7 +280,6 @@ var BootstrapField = React.createClass({
         {this.getControlWithLabel(field, status)}
         {this.getHelpText(field, status)}
         {this.getSpinner(status)}
-        {this.getError(field, status)}
       </div>
     );
   },
@@ -312,7 +311,7 @@ var BootstrapField = React.createClass({
     return field.field.widget instanceof CheckboxSelectMultiple;
   },
 
-  getControlWithLabel(field) {
+  getControlWithLabel(field, status) {
 
     if (this.isBooleanField(field)) {
       var checkbox = (
@@ -350,6 +349,7 @@ var BootstrapField = React.createClass({
         {field.labelTag({attrs: {className: 'control-label ' + this.getHorizontalLabelClasses()}})}
         <div className={this.getHorizontalControlClasses(field)}>
           {field.asWidget(this.getWidgetAttrs(field))}
+          {this.getError(field, status)}
         </div>
       </div>
     );
